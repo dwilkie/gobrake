@@ -20,7 +20,7 @@ func TestGobrake(t *testing.T) {
 }
 
 func TestCreateNoticeURL(t *testing.T) {
-	notifier := NewNotifier(1, "key")
+	notifier := NewNotifier(1, "key", "airbrake.io")
 	wanted := "https://airbrake.io/api/v3/projects/1/notices?key=key"
 	if notifier.createNoticeURL != wanted {
 		t.Fatalf("got %q, wanted %q", notifier.createNoticeURL, wanted)
@@ -46,7 +46,7 @@ var _ = Describe("Notifier", func() {
 		}
 		server := httptest.NewServer(http.HandlerFunc(handler))
 
-		notifier = NewNotifier(1, "key")
+		notifier = NewNotifier(1, "key", "airbrake.io")
 		notifier.createNoticeURL = server.URL
 	})
 
