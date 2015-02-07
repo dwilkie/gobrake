@@ -7,7 +7,7 @@ import (
 
 func getCreateNoticeURL(projectID int64, key string, host string) string {
 	return fmt.Sprintf(
-		"https://%d/api/v3/projects/%d/notices?key=%s",
+		"https://%s/api/v3/projects/%d/notices?key=%s",
 		host, projectID, key)
 }
 
